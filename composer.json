@@ -1,0 +1,18 @@
+{
+    "name": "forest-chan/crypto-2025",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Anatoliydenezhniy\\Crypto2025\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Anatoliy Denezhniy",
+            "email": "forest-chan@mail.ru"
+        }
+    ],
+    "require": {
+        "php": "^8.4"
+    }
+}
