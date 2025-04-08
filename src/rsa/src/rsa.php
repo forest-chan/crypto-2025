@@ -60,3 +60,31 @@ function rsa(int $message, int $p, int $q): array
         $decrypted
     ];
 }
+
+function main(string $text, int $p, int $q): void
+{
+    printInput($text, $p, $q);
+
+    $asciiText = textToAscii($text);
+
+    printAsciiText($asciiText);
+
+    $publicKey = 0;
+    $privateKey = 0;
+    $encryptedList = [];
+    $decryptedList = [];
+    foreach ($asciiText as $ascii) {
+        [
+            $publicKey,
+            $privateKey,
+            $encrypted,
+            $decrypted,
+        ] = rsa($ascii, $p, $q);
+
+        $encryptedList[] = $encrypted;
+        $decryptedList[] = $decrypted;
+    }
+
+    printKeys($publicKey, $privateKey);
+    printResultDecryption($encryptedList, $decryptedList);
+}

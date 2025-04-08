@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+require_once 'utils.php';
+
 // S-блоки
 $s1 = [
     [14,4,13,1,2,15,11,8,3,10,6,12,5,9,0,7],
@@ -192,27 +194,6 @@ function shiftLeft(array $value, int $shiftsCount): array
     return $value;
 }
 
-/**
- * Функция превращает строку в ASCII формате в шестнадцатиричную строку.
- */
-function ascii2hex(string $ascii): string
-{
-    return strtoupper(bin2hex($ascii));
-}
-
-/**
- * Функция превращает шестнадцатиричную строку в ASCII строку.
- */
-function hex2ascii(string $hex): string {
-    $ascii = '';
-    $iterationsCount = strlen($hex);
-    for ($i = 0; $i < $iterationsCount; $i += 2) {
-        $ascii .= chr(hexdec(substr($hex, $i, 2)));
-    }
-
-    return $ascii;
-}
-
 function getIterationKeys(array $keyBits): array
 {
     global $keyShiftTable, $keyPermutationTable, $keyCompressionTable;
@@ -231,22 +212,6 @@ function getIterationKeys(array $keyBits): array
     }
 
     return $iterationKeys;
-}
-
-function printResult(array $bitsResult): void
-{
-    echo 'Result = ' . strtoupper(base_convert(implode('', $bitsResult), 2, 16)) . PHP_EOL;
-}
-
-function printResultDecryption(array $bitsResult): void
-{
-    echo 'Decrypted Result = ' . hex2ascii(base_convert(implode('', $bitsResult), 2, 16)) . PHP_EOL;
-}
-
-function printInput(string $plainText, string $key): void
-{
-    echo 'Plain Text = ' . $plainText . PHP_EOL;
-    echo 'Key = ' . $key . PHP_EOL;
 }
 
 function des(array $plainTextBits, array $iterationKeys): array
@@ -307,7 +272,7 @@ function main(string $plainText, string $key): void
 {
     printInput($plainText, $key);
 
-    $plainText = ascii2hex($plainText);
+    $plainText = asciiToHex($plainText);
     $plainText = base_convert($plainText, 16, 2);
     $key = base_convert($key, 16, 2);
 
