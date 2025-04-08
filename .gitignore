@@ -1,4 +1,2 @@
 /.idea
-./src/*/.idea
-./vendor
-./.DS_Store
+/vendor

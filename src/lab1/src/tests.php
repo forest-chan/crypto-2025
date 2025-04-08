@@ -28,5 +28,3 @@ foreach ($testCases as $testIndex => $testCase) {
 
     echo 'End test' . PHP_EOL . PHP_EOL;
 }
-
-// атака встреча посередине на 2des
