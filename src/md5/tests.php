@@ -8,18 +8,18 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 
 $testCases = [
     [
-        'plaintText' => 'hello',
+        'text' => 'world',
     ],
     [
-        'plaintText' => 'world',
-    ],
+        'text' => 'hello',
+    ]
 ];
 
 echo PHP_EOL . 'Running MD5 crypto algorithm test cases' . PHP_EOL;
 foreach ($testCases as $testIndex => $testCase) {
     echo 'Running test #' . $testIndex + 1 . PHP_EOL;
 
-    main($testCase['plaintText']);
+    mainMd5($testCase['text']);
 
     echo 'End test' . PHP_EOL . PHP_EOL;
 }

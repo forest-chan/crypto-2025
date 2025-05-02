@@ -21,7 +21,7 @@ echo PHP_EOL . 'Running DES crypto algorithm test cases' . PHP_EOL;
 foreach ($testCases as $testIndex => $testCase) {
     echo 'Running test #' . $testIndex + 1 . PHP_EOL;
 
-    main(
+    mainDes(
         plainText: $testCase['plaintText'],
         key: $testCase['key'],
     );

@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-require_once 'utils.php';
-
 $s = [
     7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
     5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20,
@@ -30,14 +28,14 @@ $k = [
     0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391,
 ];
 
-function shiftLeft(float $x, float $c): float
+function shiftLeft(int $x, int $c): int
 {
     $shiftResult = (($x << $c) | (($x >> (32 - $c)) & (~(-1 << $c))));
 
     return apply32BitsMask($shiftResult);
 }
 
-function apply32BitsMask(float $x): float
+function apply32BitsMask(int $x): int
 {
     return $x & 0xFFFFFFFF;
 }
@@ -115,13 +113,13 @@ function hashMd5(string $message): string
     return bin2hex($hash);
 }
 
-function main(string $message): void
+function mainMd5(string $message): void
 {
-    printInput($message);
+    echo "Input message = $message" . PHP_EOL;
 
     $result = hashMd5($message);
     $standardResult = md5($message);
 
-    printResultDecryption($result);
-    printStandardPHPRealisationResult($standardResult);
+    echo "Hashing result = $result" . PHP_EOL;
+    echo "Standard PHP md5 realisation result = $standardResult" . PHP_EOL;
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once 'utils.php';
+require_once __DIR__ . "/../utils.php";
 
 function calculatePhi(int $a, int $b): int
 {
@@ -44,46 +44,53 @@ function calculateE(int $phi): int
     throw new LogicException("E value does not found");
 }
 
-function rsa(int $message, int $p, int $q): array
+function getRsaKeys(int $p, int $q): array
 {
-    $n = $p * $q;
     $phi = calculatePhi($p, $q);
     $e = calculateE($phi);
     [$gcd, $x, $y] = calculateEuclidExtended($e, $phi);
     $d = ($x % $phi + $phi) % $phi;
 
-    $encrypted = bcpowmod((string) $message, (string) $e, (string) $n);
-    $decrypted = bcpowmod($encrypted, (string) $d, (string) $n);
-
-    return [
-        'publicKey' => $e,
-        'privateKey' => $d,
-        'encrypted' => $encrypted,
-        'decrypted' => $decrypted,
-    ];
+    return [$e, $d];
 }
 
-function main(string $text, int $p, int $q): void
+function calculateN(int $p, int $q): int
 {
-    printInput($text, $p, $q);
+    return $p * $q;
+}
+
+function encryptRsa(string $message, int $publicKey, int $n): string
+{
+    return bcpowmod($message, (string) $publicKey, (string) $n);
+}
+
+function decryptRsa(string $message, int $privateKey, int $n): string
+{
+    return bcpowmod($message, (string) $privateKey, (string) $n);
+}
+
+function mainRsa(string $text, int $p, int $q): void
+{
+    echo "Text = $text, p = $p, q = $q" . PHP_EOL;
 
     $asciiText = textToAscii($text);
 
-    printAsciiText($asciiText);
+    echo "Ascii Text = " . implode(' ', $asciiText) . PHP_EOL;
 
-    $publicKey = 0;
-    $privateKey = 0;
+    $n = calculateN($p, $q);
+    [$publicKey, $privateKey] = getRsaKeys($p, $q);
+
+    echo "Public key = $publicKey, private key = $privateKey" . PHP_EOL;
+
     $encryptedList = [];
     $decryptedList = [];
     foreach ($asciiText as $ascii) {
-        $rsaResult = rsa($ascii, $p, $q);
+        $encrypted = encryptRsa($ascii, $publicKey, $n);
 
-        $publicKey = $rsaResult['publicKey'];
-        $privateKey = $rsaResult['privateKey'];
-        $encryptedList[] = $rsaResult['encrypted'];
-        $decryptedList[] = $rsaResult['decrypted'];
+        $encryptedList[] = $encrypted;
+        $decryptedList[] = decryptRsa($encrypted, $privateKey, $n);
     }
 
-    printKeys($publicKey, $privateKey);
-    printResultDecryption($encryptedList, $decryptedList);
+    echo "Encrypted text = " . implode(' ', $encryptedList) . ", Decrypted text = " . implode(' ', $decryptedList) . PHP_EOL;
+    echo "Result Decrypted text = ". asciiToText($decryptedList) . PHP_EOL;
 }

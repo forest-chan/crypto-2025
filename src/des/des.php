@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once 'utils.php';
+require_once __DIR__ . "/../utils.php";
 
 // S-блоки
 $s1 = [
@@ -268,9 +268,9 @@ function des(array $plainTextBits, array $iterationKeys): array
     return permuteArrays($combinedParts, $finalPermutationTable, 64);
 }
 
-function main(string $plainText, string $key): void
+function mainDes(string $plainText, string $key): void
 {
-    printInput($plainText, $key);
+    echo 'Plain Text = ' . $plainText . PHP_EOL . 'Key = ' . $key . PHP_EOL;
 
     $plainText = asciiToHex($plainText);
     $plainText = base_convert($plainText, 16, 2);
@@ -292,6 +292,6 @@ function main(string $plainText, string $key): void
     $resultCipherBits = des($plainTextBits, $iterationKeys);
     $resultDecryptedBits = des($resultCipherBits, array_reverse($iterationKeys));
 
-    printResult($resultCipherBits);
-    printResultDecryption($resultDecryptedBits);
+    echo 'Result = ' . strtoupper(base_convert(implode('', $resultCipherBits), 2, 16)) . PHP_EOL;
+    echo 'Decrypted Result = ' . hexToAscii(base_convert(implode('', $resultDecryptedBits), 2, 16)) . PHP_EOL;
 }
