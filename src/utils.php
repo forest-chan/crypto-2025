@@ -27,10 +27,9 @@ function textToAscii(string $text): array
 
 function asciiToText(array $ascii): string
 {
-    $text = '';
-    foreach ($ascii as $char) {
-        $text .= chr((int) $char);
-    }
-
-    return $text;
+    return array_reduce(
+        array: $ascii,
+        callback: static fn (string $resultText, string $char): string => $resultText . chr((int) $char),
+        initial: ''
+    );
 }
