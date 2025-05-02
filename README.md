@@ -1,8 +1,10 @@
 # crypto-2025
 
-![PHP Version](https://img.shields.io/badge/PHP-8.4+-brightgreen.svg)
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![PHP Version](https://img.shields.io/badge/PHP-8.3+-brightgreen.svg)
 ![Composer](https://img.shields.io/badge/Composer-Compatible-orange.svg)
+![Docker](https://img.shields.io/badge/Docker-✓-blue?logo=docker&logoColor=white&style=flat)
+![Docker Compose](https://img.shields.io/badge/Docker_Compose-✓-blue?logo=docker&logoColor=white&style=flat)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 Implementations of cryptographic algorithms for a university course
 
