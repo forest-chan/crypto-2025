@@ -10,7 +10,14 @@ $testCases = [
     [
         'p' => 7,
         'q' => 11,
-        'text' => 'a',
+        'textToSign' => 'a',
+        'textToVerify' => 'a',
+    ],
+    [
+        'p' => 7,
+        'q' => 11,
+        'textToSign' => 'a',
+        'textToVerify' => 'b',
     ],
 ];
 
@@ -19,7 +26,8 @@ foreach ($testCases as $testIndex => $testCase) {
     echo 'Running test #' . $testIndex + 1 . PHP_EOL;
 
     mainSignature(
-        text: $testCase['text'],
+        textToSign: $testCase['textToSign'],
+        textToVerify: $testCase['textToVerify'],
         p: $testCase['p'],
         q: $testCase['q']
     );

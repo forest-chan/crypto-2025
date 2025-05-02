@@ -19,20 +19,24 @@ function verify(string $message, string $signature, int $publicKey, int $n): boo
     $hashNumber = base_convert($hashMessage, 16, 10);
     $result = decryptRsa($signature, $publicKey, $n);
 
-    return $hashNumber === $result;
+    return bcmod($hashNumber, (string) $n) === $result;
 }
 
-function mainSignature(string $text, int $p, int $q): void
-{
-    echo "Input text = $text, p = $p, q = $q" . PHP_EOL;
+function mainSignature(
+    string $textToSign,
+    string $textToVerify,
+    int $p,
+    int $q
+): void {
+    echo "Input text to sign = $textToSign, input text to verify = $textToVerify, p = $p, q = $q" . PHP_EOL;
 
     $n = calculateN($p, $q);
     [$publicKey, $privateKey] = getRsaKeys($p, $q);
-    $signature = sign($text, $privateKey, $n);
+    $signature = sign($textToSign, $privateKey, $n);
 
     echo "Signature = $signature" . PHP_EOL;
 
-    $verificationResult = verify($text, $signature, $publicKey, $n);
+    $verificationResult = verify($textToVerify, $signature, $publicKey, $n);
 
-    echo $verificationResult === true ? 'Verification result successful' : 'Verification result failed' . PHP_EOL;
+    echo $verificationResult === true ? 'Verification result successful' . PHP_EOL : 'Verification result failed' . PHP_EOL;
 }
