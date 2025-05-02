@@ -18,10 +18,8 @@ Implementations of cryptographic algorithms for a university course
 | MD5 + RSA | Digital Signature |
 
 ## Requirements:
-```
 1. Docker version >= 25.0.3
 2. Docker Compose version >= v2.24.5-desktop.1
-```
 
 ## Installation:
 ```bash
