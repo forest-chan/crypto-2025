@@ -19,6 +19,7 @@ Implementations of cryptographic algorithms for a university course
 ```
 1. PHP >= 8.4
 2. Composer >= 2.7
+3. Bcmath PHP extension
 ```
 
 ## Installation:
