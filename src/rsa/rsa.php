@@ -54,10 +54,10 @@ function rsa(int $message, int $p, int $q): array
     $decrypted = bcpowmod($encrypted, (string) $d, (string) $n);
 
     return [
-        $e,
-        $d,
-        $encrypted,
-        $decrypted
+        'publicKey' => $e,
+        'privateKey' => $d,
+        'encrypted' => $encrypted,
+        'decrypted' => $decrypted,
     ];
 }
 
@@ -74,15 +74,12 @@ function main(string $text, int $p, int $q): void
     $encryptedList = [];
     $decryptedList = [];
     foreach ($asciiText as $ascii) {
-        [
-            $publicKey,
-            $privateKey,
-            $encrypted,
-            $decrypted,
-        ] = rsa($ascii, $p, $q);
+        $rsaResult = rsa($ascii, $p, $q);
 
-        $encryptedList[] = $encrypted;
-        $decryptedList[] = $decrypted;
+        $publicKey = $rsaResult['publicKey'];
+        $privateKey = $rsaResult['privateKey'];
+        $encryptedList[] = $rsaResult['encrypted'];
+        $decryptedList[] = $rsaResult['decrypted'];
     }
 
     printKeys($publicKey, $privateKey);
