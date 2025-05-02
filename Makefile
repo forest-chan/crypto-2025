@@ -1,6 +1,6 @@
 # project installation
 install:
-	docker-compose build --no-cache
+	docker-compose up -d --build
 
 # run test cases
 run-all: run-des run-rsa run-md5 run-signature
