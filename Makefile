@@ -1,9 +1,14 @@
+# project installation
+install:
+	docker-compose build --no-cache
+
+# run test cases
 run-all: run-des run-rsa run-md5 run-signature
 run-des:
-	php './src/des/tests.php'
+	docker-compose run php php 'src/des/tests.php'
 run-rsa:
-	php './src/rsa/tests.php'
+	docker-compose run php php 'src/rsa/tests.php'
 run-md5:
-	php './src/md5/tests.php'
+	docker-compose run php php 'src/rsa/tests.php'
 run-signature:
-	php './src/signature/tests.php'
+	docker-compose run php php 'src/signature/tests.php'

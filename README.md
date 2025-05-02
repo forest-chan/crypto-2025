@@ -17,16 +17,15 @@ Implementations of cryptographic algorithms for a university course
 
 ## Requirements:
 ```
-1. PHP >= 8.4
-2. Composer >= 2.7
-3. Bcmath PHP extension
+1. Docker version >= 25.0.3
+2. Docker Compose version >= v2.24.5-desktop.1
 ```
 
 ## Installation:
 ```bash
 git clone git@github.com:forest-chan/crypto-2025.git
 cd crypto-2025
-composer install
+make install
 ```
 
 ## Usage:
