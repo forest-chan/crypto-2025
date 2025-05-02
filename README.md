@@ -46,3 +46,7 @@ make run-rsa
 ```bash
 make run-rsa
 ```
+5. Run Digital Signature cryptographic algorithm test cases:
+```bash
+make run-signature
+```
