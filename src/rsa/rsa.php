@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+require_once 'utils.php';
+
 function calculatePhi(int $a, int $b): int
 {
     return ($a - 1) * ($b - 1);
@@ -39,7 +41,7 @@ function calculateE(int $phi): int
         }
     }
 
-    throw new \Exception("E value does not found");
+    throw new LogicException("E value does not found");
 }
 
 function rsa(int $message, int $p, int $q): array

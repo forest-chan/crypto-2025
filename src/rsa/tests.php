@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 require_once 'rsa.php';
-require_once 'utils.php';
 
 error_reporting(E_ALL ^ E_DEPRECATED);
 
@@ -20,7 +19,7 @@ $testCases = [
     ],
 ];
 
-echo PHP_EOL;
+echo PHP_EOL . 'Running RSA crypto algorithm test cases' . PHP_EOL;
 foreach ($testCases as $testIndex => $testCase) {
     echo 'Running test #' . $testIndex + 1 . PHP_EOL;
 
