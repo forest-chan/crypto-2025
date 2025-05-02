@@ -23,7 +23,7 @@ foreach ($testCases as $testIndex => $testCase) {
 
     mainDes(
         plainText: $testCase['plaintText'],
-        key: $testCase['key'],
+        key: $testCase['key']
     );
 
     echo 'End test' . PHP_EOL . PHP_EOL;

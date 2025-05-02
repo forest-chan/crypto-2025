@@ -26,7 +26,7 @@ foreach ($testCases as $testIndex => $testCase) {
     mainRsa(
         text: $testCase['text'],
         p: $testCase['p'],
-        q: $testCase['q'],
+        q: $testCase['q']
     );
 
     echo 'End test' . PHP_EOL . PHP_EOL;
