@@ -8,11 +8,12 @@ Implementations of cryptographic algorithms for a university course
 
 ## Implemented cryptographic algorithms:
 
-| Altorithm | Category      |
-|-----|---------------|
-| DES | Symmetric     | 
-| RSA | Asymmetric    |
-| MD5 | Hash function |
+| Altorithm | Category          |
+|-----------|-------------------|
+| DES       | Symmetric         | 
+| RSA       | Asymmetric        |
+| MD5       | Hash function     |
+| MD5 + RSA | Digital Signature |
 
 ## Requirements:
 ```
