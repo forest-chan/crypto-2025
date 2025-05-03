@@ -1,6 +1,6 @@
 # crypto-2025
 
-![PHP Version](https://img.shields.io/badge/PHP-8.3+-brightgreen.svg)
+![PHP Version](https://img.shields.io/badge/PHP-8.3-brightgreen.svg)
 ![Composer](https://img.shields.io/badge/Composer-Compatible-orange.svg)
 ![Docker](https://img.shields.io/badge/Docker-✓-blue?logo=docker&logoColor=white&style=flat)
 ![Docker Compose](https://img.shields.io/badge/Docker_Compose-✓-blue?logo=docker&logoColor=white&style=flat)
@@ -25,7 +25,8 @@ Implementations of cryptographic algorithms for a university course
 ```bash
 git clone git@github.com:forest-chan/crypto-2025.git
 cd crypto-2025
-make install
+make build
+make up
 ```
 
 ## Usage:
