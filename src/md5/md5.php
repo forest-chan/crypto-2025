@@ -30,7 +30,7 @@ $k = [
 
 function shiftLeft(int $x, int $c): int
 {
-    $shiftResult = (($x << $c) | (($x >> (32 - $c)) & (~(-1 << $c))));
+    $shiftResult = (($x << $c) | ($x >> (32 - $c)));
 
     return apply32BitsMask($shiftResult);
 }
@@ -50,7 +50,7 @@ function hashMd5(string $message): string
     $c0 = 0x98badcfe;
     $d0 = 0x10325476;
 
-    // Предварительная обработка
+    // Предварительная обработка, получаем длину сообщения в байтах (<< 3 == * 8)
     $originalLength = strlen($message);
     $originalBits = $originalLength << 3;
 
@@ -79,16 +79,16 @@ function hashMd5(string $message): string
         $D = $d0;
 
         for ($i = 0; $i < 64; $i++) {
-            if ($i < 16) {
+            if ($i < 16) { // F(B,C,D) = (B AND C) OR ((NOT B) AND D)
                 $F = ($B & $C) | ((~$B) & $D);
                 $g = $i;
-            } elseif ($i < 32) {
+            } elseif ($i < 32) { // F(B,C,D) = (D AND B) OR ((NOT D) AND C)
                 $F = ($D & $B) | ((~$D) & $C);
                 $g = (5 * $i + 1) % 16;
-            } elseif ($i < 48) {
+            } elseif ($i < 48) { // F(B,C,D) = B XOR C XOR D
                 $F = $B ^ $C ^ $D;
                 $g = (3 * $i + 5) % 16;
-            } else {
+            } else { // F(B,C,D) = C XOR (B OR (NOT D))
                 $F = $C ^ ($B | (~$D));
                 $g = (7 * $i) % 16;
             }
