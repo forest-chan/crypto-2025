@@ -7,7 +7,7 @@
 ![Docker Compose](https://img.shields.io/badge/Docker_Compose-✓-blue?logo=docker&logoColor=white&style=flat)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-Implementations of cryptographic algorithms for a university course
+Implementations of cryptographic algorithms for a university course with PHP 8.3
 
 ## Implemented cryptographic algorithms:
 
