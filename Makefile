@@ -9,10 +9,12 @@ down:
 # run test cases
 run-all: run-des run-rsa run-md5 run-signature
 run-des:
-	docker-compose exec php php 'src/des/tests.php'
+	docker-compose exec php vendor/bin/phpunit ./tests/CryptoAlgorithm/DES/DESTest.php --testdox
+	docker-compose exec php vendor/bin/phpunit ./tests/CryptoAlgorithm/DES/DESTextDecoratorTest.php --testdox
 run-rsa:
-	docker-compose exec php php 'src/rsa/tests.php'
+	docker-compose exec php vendor/bin/phpunit ./tests/CryptoAlgorithm/RSA/RSATest.php --testdox
+	docker-compose exec php vendor/bin/phpunit ./tests/CryptoAlgorithm/RSA/RSATextDecoratorTest.php --testdox
 run-md5:
-	docker-compose exec php php 'src/md5/tests.php'
+	docker-compose exec php vendor/bin/phpunit ./tests/HashFunction/MD5/MD5Test.php --testdox
 run-signature:
-	docker-compose exec php php 'src/signature/tests.php'
+	docker-compose exec php vendor/bin/phpunit ./tests/DigitalSignature/DigitalSignatureMD5RSA/DigitalSignatureMD5RSATest.php --testdox
