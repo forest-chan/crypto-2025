@@ -2,6 +2,7 @@
 
 ![PHP Version](https://img.shields.io/badge/PHP-8.3-brightgreen.svg)
 ![Composer](https://img.shields.io/badge/Composer-Compatible-orange.svg)
+![PHPUnit](https://img.shields.io/badge/PHPUnit-12.6-blueviolet.svg)
 ![Docker](https://img.shields.io/badge/Docker-✓-blue?logo=docker&logoColor=white&style=flat)
 ![Docker Compose](https://img.shields.io/badge/Docker_Compose-✓-blue?logo=docker&logoColor=white&style=flat)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
